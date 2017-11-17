@@ -24,6 +24,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ListOfDoctorNurseActivity"></activity>
+        <activity android:name=".RegistrationActivity"></activity>
     </application>
 
 </manifest>
