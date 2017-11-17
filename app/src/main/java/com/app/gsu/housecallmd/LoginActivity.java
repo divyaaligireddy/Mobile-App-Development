@@ -43,6 +43,11 @@ public class LoginActivity extends AppCompatActivity {
         mRegister = (Button) findViewById(R.id.create_account_button);
     }
 
+    protected void clickLogin(View v){
+        Intent i = new Intent(LoginActivity.this, RegistrationActivity.class);
+        startActivity(i);
+    }
+
     public void attemptLogin(View view) {
 
 
