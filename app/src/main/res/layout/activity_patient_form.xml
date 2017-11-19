@@ -1,0 +1,383 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/ScrollView01"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:scrollbars="vertical">
+
+    <LinearLayout
+        android:layout_width="fill_parent"
+        android:orientation="vertical"
+        android:layout_height="fill_parent">
+
+        <TextView
+            android:id="@+id/TextViewPersonalInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PersonalInformation"
+            android:textSize="10pt"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TextViewPatientName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Name"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditTextFirstName"
+            android:layout_height="wrap_content"
+            android:hint="@string/FirstName"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <EditText
+            android:id="@+id/EditTextLastName"
+            android:layout_height="wrap_content"
+            android:hint="@string/LastName"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewPatientAddress"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PatientAddress"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditTextPatientAddress"
+            android:layout_height="wrap_content"
+            android:hint="@string/PatientAddressInfo"
+            android:inputType="textPostalAddress"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewDateofBirth"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/DateofBirth"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditTextDoB"
+            android:layout_height="wrap_content"
+            android:hint="@string/PatientDoB"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewEmail"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Email"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditEmailInfo"
+            android:layout_height="wrap_content"
+            android:hint="@string/EmailInfo"
+            android:inputType="textEmailAddress"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Phone"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditPhoneInfo"
+            android:layout_height="wrap_content"
+            android:hint="@string/PhoneInfo"
+            android:inputType="phone"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextGender"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Gender"
+            android:textSize="10pt">
+        </TextView>
+
+        <Spinner
+            android:id="@+id/SpinnerGenderType"
+            android:layout_height="wrap_content"
+            android:prompt="@string/Gender"
+            android:layout_width="fill_parent"
+            android:entries="@array/gendertypelist">
+        </Spinner>
+
+        <TextView
+            android:id="@+id/TextMarital"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Marital"
+            android:textSize="10pt">
+        </TextView>
+
+        <Spinner
+            android:id="@+id/SpinnerMaritalType"
+            android:layout_height="wrap_content"
+            android:prompt="@string/Marital"
+            android:layout_width="fill_parent"
+            android:entries="@array/maritaltypelist">
+        </Spinner>
+
+        <TextView
+            android:id="@+id/TextViewInsuranceInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/InsuranceInformation"
+            android:textSize="10pt"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TextViewInsuranceName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/InsuranceName"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditTextInsName"
+            android:layout_height="wrap_content"
+            android:hint="@string/InsName"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewInsuranceId"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/InsuranceId"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditInsuranceIdInfo"
+            android:layout_height="wrap_content"
+            android:hint="@string/InsuanceIdInfo"
+            android:inputType="number"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewGroupNumber"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/GroupNumber"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditGroupNumberInfo"
+            android:layout_height="wrap_content"
+            android:hint="@string/GroupNumberInfo"
+            android:inputType="number"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewEmergencyInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EmergencyInformation"
+            android:textSize="10pt"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TextViewEmergencyName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EmergencyName"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditTextEmergencyFirstName"
+            android:layout_height="wrap_content"
+            android:hint="@string/EmergencyFirstName"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <EditText
+            android:id="@+id/EditTextEmergencyLastName"
+            android:layout_height="wrap_content"
+            android:hint="@string/EmergencyLastName"
+            android:inputType="textPersonName"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewEmergencyPhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EmergencyPhone"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditEmergencyPhoneInfo"
+            android:layout_height="wrap_content"
+            android:hint="@string/EmergencyPhoneInfo"
+            android:inputType="phone"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextEmergencyStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/EmergencyStatus"
+            android:textSize="10pt">
+        </TextView>
+
+        <Spinner
+            android:id="@+id/SpinnerEmergencyStatuaType"
+            android:layout_height="wrap_content"
+            android:prompt="@string/EmergencyStatus"
+            android:layout_width="fill_parent"
+            android:entries="@array/emergencytypelist">
+        </Spinner>
+
+
+        <TextView
+            android:id="@+id/TextViewPastMedicalHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/PastMedicalHistory"
+            android:textSize="10pt"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TextViewPastMedicalHistoryInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/MedicalHistoryInformation"
+            android:textSize="10pt">
+        </TextView>
+
+        <CheckBox android:id="@+id/checkbox_heartattack"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/heartattack"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_stroke"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/stroke"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_diabetes"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/diabetes"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_arthiritis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/arthiritis"
+            android:onClick="onCheckboxClicked"/>
+
+        <TextView
+            android:id="@+id/TextViewFamilyHistory"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/FamilyHistory"
+            android:textSize="10pt"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TextViewFamilyHistoryInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/FamilyHistoryInformation"
+            android:textSize="10pt">
+        </TextView>
+
+        <CheckBox android:id="@+id/checkbox_heardisease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/heartdisease"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_highbloodpressure"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/highbloodpressure"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_tuberculosis"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/tuberculosis"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_narcolypsy"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/narcolypsy"
+            android:onClick="onCheckboxClicked"/>
+
+        <TextView
+            android:id="@+id/TextViewLifestyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Lifestyle"
+            android:textSize="10pt"
+            android:textStyle="bold"></TextView>
+
+        <TextView
+            android:id="@+id/TextViewLifestyleInformation"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/LifestyleInformation"
+            android:textSize="10pt">
+        </TextView>
+
+        <CheckBox android:id="@+id/checkbox_Cardio"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Cardio"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_ResistanceTraining"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/resistancetraining"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_aerobics"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/aerobics"
+            android:onClick="onCheckboxClicked"/>
+        <CheckBox android:id="@+id/checkbox_Sedentary"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/sedentary"
+            android:onClick="onCheckboxClicked"/>
+
+        <Button
+            android:id="@+id/ButtonSendFeedback"
+            android:layout_height="wrap_content"
+            android:text="@string/feedbackbutton"
+            android:onClick="sendFeedback"
+            android:layout_width="fill_parent">
+        </Button>
+
+    </LinearLayout>
+</ScrollView>
