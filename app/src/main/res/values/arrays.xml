@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string-array name="gendertypelist">
+        <item>@string/Gendertype1</item>
+        <item>@string/Gendertype2</item>
+    </string-array>
+
+    <string-array name="maritaltypelist">
+        <item>@string/Maritaltype1</item>
+        <item>@string/Maritaltype2</item>
+        <item>@string/Maritaltype3</item>
+    </string-array>
+
+    <string-array name="emergencytypelist">
+        <item>@string/Emergencytype1</item>
+        <item>@string/Emergencytype2</item>
+        <item>@string/Emergencytype3</item>
+        <item>@string/Emergencytype4</item>
+    </string-array>
+</resources>

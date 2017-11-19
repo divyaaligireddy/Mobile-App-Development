@@ -23,8 +23,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".ListOfDoctorNurseActivity"></activity>
-        <activity android:name=".RegistrationActivity"></activity>
+        <activity android:name=".ListOfDoctorNurseActivity" />
+        <activity android:name=".RegistrationActivity" />
+        <activity android:name=".PatientForm"></activity>
     </application>
 
 </manifest>
