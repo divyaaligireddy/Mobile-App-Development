@@ -25,7 +25,9 @@
         </activity>
         <activity android:name=".ListOfDoctorNurseActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".PatientForm"></activity>
+        <activity android:name=".PatientForm" />
+        <activity android:name=".Confirmation" />
+        <activity android:name=".User"></activity>
     </application>
 
 </manifest>
