@@ -15,7 +15,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class ListOfDoctorNurseActivity extends ListActivity {
-
+    public static final String CONF_INFO = "com.app.gsu.housecallmd.Confirmation";
     List<DoctorNurse> doctorNurseList = new ArrayList<>();
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -38,7 +38,10 @@ public class ListOfDoctorNurseActivity extends ListActivity {
     }
 
     public void onListItemClick(ListView parent, View v, int position, long id) {
-        Toast.makeText(this, "You have Selected " + doctorNurseList.get(position).getName(),Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(ListOfDoctorNurseActivity.this, Confirmation.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        intent.putExtra(CONF_INFO,doctorNurseList.get(position));
+        startActivity(intent);
     }
 
 }
