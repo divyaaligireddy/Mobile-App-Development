@@ -34,7 +34,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        addPatientsDoctors();
+        //Resolve related issue before uncommenting below
+        //addPatientsDoctors();
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -122,7 +123,7 @@ public class LoginActivity extends AppCompatActivity {
 
     private void addPatientsDoctors() {
         DatabaseHandler db = new DatabaseHandler(this);
-
+        //Issue, check if exist already in db before insert
         Log.d("Insert: ", "Inserting Patients ..");
         db.addPatient(new Patient("divya@gmail.com", "divya", "Divya", "4534333323"));
         db.addPatient(new Patient("shobana@gmail.com", "shobana", "Shobana", "4534400000"));
