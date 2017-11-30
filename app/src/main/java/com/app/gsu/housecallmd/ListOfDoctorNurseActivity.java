@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.Toast;
 
 import com.app.gsu.housecallmd.entity.DoctorNurse;
 import com.app.gsu.housecallmd.entity.Patient;
@@ -24,13 +23,6 @@ public class ListOfDoctorNurseActivity extends ListActivity {
 
         Intent intent = getIntent();
         Patient patient = (Patient) intent.getSerializableExtra(LoginActivity.PATIENT_INFO);
-
-        /*TextView textView = new TextView(this);
-        textView.setTextSize(18);
-        textView.setText("Hello " + patient.getName());
-
-        ConstraintLayout layout = (ConstraintLayout) findViewById(R.id.content);
-        layout.addView(textView);*/
 
         doctorNurseList = db.getAllDoctorNurse();
         setListAdapter(new ArrayAdapter<DoctorNurse>(this, android.R.layout.simple_list_item_1, doctorNurseList));

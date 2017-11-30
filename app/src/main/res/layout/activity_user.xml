@@ -1,38 +1,34 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:orientation="vertical"
     tools:context="com.app.gsu.housecallmd.User">
     <TextView
         android:id="@+id/textView1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Who are you?"
+        android:text="@string/whoAreYou"
         android:layout_marginBottom="40dp"
         android:textSize="20sp" />
-    <RadioGroup xmlns:android="http://schemas.android.com/apk/res/android"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        tools:layout_editor_absoluteY="60dp"
-        tools:layout_editor_absoluteX="0dp">
+    <RadioGroup android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
         <RadioButton android:id="@+id/radio_patient"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Patient"
+            android:text="@string/Patient"
             android:onClick="onRadioButtonClicked"/>
         <RadioButton android:id="@+id/radio_Doctor"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Doctor"
+            android:text="@string/Doctor"
             android:onClick="onRadioButtonClicked"/>
         <RadioButton android:id="@+id/radio_Nurse"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Nurse"
+            android:text="@string/Nurse"
             android:onClick="onRadioButtonClicked"/>
     </RadioGroup>
 
-</android.support.constraint.ConstraintLayout>
+</LinearLayout>

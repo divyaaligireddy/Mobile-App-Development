@@ -16,8 +16,7 @@
     </string>
     <string name="PersonalInformation">Personal Information</string>
     <string name="Name">Name</string>
-    <string name="FirstName">First Name</string>
-    <string name="LastName">Last Name</string>
+    <string name="PatientName">First Name    Last Name</string>
     <string name="PatientAddress">Address</string>
     <string name="PatientAddressInfo">Enter Address</string>
     <string name="DateofBirth">Date of Birth</string>
@@ -42,18 +41,20 @@
     <string name="GroupNumberInfo">Enter Group Number</string>
     <string name="EmergencyInformation">Emergency Information</string>
     <string name="EmergencyName">Name</string>
-    <string name="EmergencyFirstName">First Name</string>
-    <string name="EmergencyLastName">Last Name</string>
+    <string name="EmergencyFullName">First Name    Last Name</string>
     <string name="EmergencyPhone">Emergency Phone</string>
     <string name="EmergencyPhoneInfo">Enter Emergency Phone</string>
-    <string name="feedbackbutton">Title</string>
+    <string name="patientbutton">Submit</string>
     <string name="EmergencyStatus">Emergency Relationship</string>
     <string name="Emergencytype1">Spouse</string>
     <string name="Emergencytype2">Relative</string>
     <string name="Emergencytype3">Guardian</string>
     <string name="Emergencytype4">Friend</string>
     <string name="PastMedicalHistory">Past Medical History</string>
-    <string name="MedicalHistoryInformation">Please Check Applicabale</string>
+    <string name="MedicalHistoryInformation">Please Check Applicable</string>
+    <string name="Password">Password</string>
+    <string name="Request">Request</string>
+    <string name="Cancel">Cancel</string>
     <string name="heartattack">Heart Attack</string>
     <string name="stroke">Stroke</string>
     <string name="diabetes">Diabetes</string>
@@ -70,4 +71,8 @@
     <string name="resistancetraining">Resistance</string>
     <string name="aerobics">Aerobics</string>
     <string name="sedentary">Sedentary</string>
+    <string name="whoAreYou">Who are you?</string>
+    <string name="Patient">Patient</string>
+    <string name="Doctor">Doctor</string>
+    <string name="Nurse">Nurse</string>
 </resources>

@@ -5,9 +5,12 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.support.annotation.NonNull;
 import android.util.Log;
 
 import com.app.gsu.housecallmd.entity.DoctorNurse;
+import com.app.gsu.housecallmd.entity.EmergencyContact;
+import com.app.gsu.housecallmd.entity.InsuranceDetails;
 import com.app.gsu.housecallmd.entity.Patient;
 import com.app.gsu.housecallmd.entity.Profession;
 
@@ -28,7 +31,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String DATABASE_NAME = "houseCall";
 
     // Patients table name
-    private static final String TABLE_PATIENTS = "patients";
+    private static final String TABLE_PATIENTS = "patient";
 
     // DoctorNurse table name
     private static final String TABLE_DOCTOR_NURSE = "doctor_nurse";
@@ -39,6 +42,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_NAME = "name";
     private static final String KEY_PH_NO = "phone_number";
 
+    //private static final String[] PATIENT_COLUMNS = {"id", "password", "name", "phone_number", "address", "dob", "gender", "maritalStatus", "insuranceCompany", "insuranceId", "groupNumber", "eName", "phoneNumber", "relationship"};
 
     // DoctorNurse Table Columns names
     private static final String KEY_DOC_ID = "id";
@@ -55,10 +59,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     // Creating Tables
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_PATIENTS_TABLE = "CREATE TABLE " + TABLE_PATIENTS + "("
-                + KEY_ID + " TEXT PRIMARY KEY," + KEY_PASSWORD + " TEXT," + KEY_NAME + " TEXT,"
-                + KEY_PH_NO + " TEXT" + ")";
-        Log.d("Creating Table: ", CREATE_PATIENTS_TABLE);
+        String CREATE_PATIENTS_TABLE = createPatientTable();
         db.execSQL(CREATE_PATIENTS_TABLE);
 
         String CREATE_DOCTOR_NURSE_TABLE = "CREATE TABLE " + TABLE_DOCTOR_NURSE + "("
@@ -67,6 +68,18 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 + KEY_AVAILABILITY + " TEXT" + ")";
         Log.d("Creating Table: ", CREATE_DOCTOR_NURSE_TABLE);
         db.execSQL(CREATE_DOCTOR_NURSE_TABLE);
+        //db.close();
+    }
+
+    @NonNull
+    private String createPatientTable() {
+        String CREATE_PATIENTS_TABLE = "CREATE TABLE " + TABLE_PATIENTS + "("
+                + KEY_ID + " TEXT PRIMARY KEY," + KEY_PASSWORD + " TEXT," + KEY_NAME + " TEXT,"
+                + KEY_PH_NO + " TEXT,address TEXT,dob TEXT,gender TEXT,maritalStatus TEXT,"
+                + "insuranceCompany TEXT,insuranceId TEXT,groupNumber TEXT,eName TEXT,phoneNumber TEXT,"
+                + "relationship TEXT" + ")";
+        Log.d("Creating Table: ", CREATE_PATIENTS_TABLE);
+        return CREATE_PATIENTS_TABLE;
     }
 
     @Override
@@ -76,6 +89,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         db.execSQL("DROP TABLE IF EXISTS " + TABLE_DOCTOR_NURSE);
         // Create tables again
         onCreate(db);
+        //db.close();
     }
 
     // Adding new Patient
@@ -87,21 +101,42 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_PASSWORD, patient.get_password());
         values.put(KEY_NAME, patient.getName());
         values.put(KEY_PH_NO, patient.getPhoneNumber());
+        values.put("address", patient.get_address());
+        values.put("dob", patient.get_dob());
+        values.put("gender", patient.get_gender());
+        values.put("maritalStatus", patient.get_maritalStatus());
+        if(patient.get_insuranceDetails() != null) {
+            values.put("insuranceCompany", patient.get_insuranceDetails().get_insuranceCompany());
+            values.put("insuranceId", patient.get_insuranceDetails().get_insuranceId());
+            values.put("groupNumber", patient.get_insuranceDetails().get_groupNumber());
+        }
+        if(patient.get_emergencyContact() != null) {
+            values.put("phoneNumber", patient.get_emergencyContact().get_phoneNumber());
+            values.put("relationship", patient.get_emergencyContact().get_relationship());
+            values.put("eName", patient.get_emergencyContact().get_name());
+        }
 
         // Inserting Row
         db.insert(TABLE_PATIENTS, null, values);
-        db.close();
+        //db.close();
     }
 
     // Getting single Patient
     public Patient getPatient(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
-
+        Patient patient = null;
         Cursor cursor = db.query(TABLE_PATIENTS, new String[] {KEY_ID, KEY_PASSWORD, KEY_NAME, KEY_PH_NO}, KEY_ID + "=?", new String[] {id}, null, null, null);
-        if(cursor != null)
-            cursor.moveToFirst();
 
-        Patient patient = new Patient(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        if(cursor != null && cursor.moveToFirst()) {
+            System.out.println(cursor.getString(0));
+            System.out.println(cursor.getString(1));
+            System.out.println(cursor.getString(2));
+            System.out.println(cursor.getString(3));
+            //System.out.println(cursor.getString(4));
+            patient = new Patient(cursor.getString(cursor.getColumnIndexOrThrow(KEY_ID)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            cursor.close();
+        }
+       // db.close();
         return patient;
     }
 
@@ -119,7 +154,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         // Inserting Row
         db.insert(TABLE_DOCTOR_NURSE, null, values);
-        db.close();
+        //db.close();
     }
 
     // Getting All Doctors/Nurses
@@ -148,6 +183,41 @@ public class DatabaseHandler extends SQLiteOpenHelper {
             } while (cursor.moveToNext());
         }
 
+        //db.close();
+        return list;
+    }
+
+    // Getting All Patients
+    public List<Patient> getAllPatients() {
+        List<Patient> list = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_PATIENTS;
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, null);
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                Patient patient = new Patient();
+                patient.setID(cursor.getString(0));
+                patient.set_password(cursor.getString(1));
+                patient.setName(cursor.getString(2));
+                patient.setPhoneNumber(cursor.getString(3));
+                patient.set_address(cursor.getString(4));
+                patient.set_dob(cursor.getString(5));
+                patient.set_gender(cursor.getString(6));
+                patient.set_maritalStatus(cursor.getString(7));
+                patient.set_insuranceDetails(new InsuranceDetails(cursor.getString(8), cursor.getString(9), cursor.getString(10)));
+                patient.set_emergencyContact(new EmergencyContact(cursor.getString(11), cursor.getString(12), cursor.getString(13)));
+
+                // Adding contact to list
+                list.add(patient);
+            } while (cursor.moveToNext());
+        }
+
+        //db.close();
         return list;
     }
 

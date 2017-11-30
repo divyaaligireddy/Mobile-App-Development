@@ -9,7 +9,7 @@
     <LinearLayout
         android:layout_width="fill_parent"
         android:orientation="vertical"
-        android:layout_height="fill_parent">
+        android:layout_height="wrap_content">
 
         <TextView
             android:id="@+id/TextViewPersonalInformation"
@@ -17,7 +17,8 @@
             android:layout_height="wrap_content"
             android:text="@string/PersonalInformation"
             android:textSize="10pt"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:id="@+id/TextViewPatientName"
@@ -28,18 +29,42 @@
         </TextView>
 
         <EditText
-            android:id="@+id/EditTextFirstName"
+            android:id="@+id/EditTextPatientName"
             android:layout_height="wrap_content"
-            android:hint="@string/FirstName"
+            android:hint="@string/PatientName"
             android:inputType="textPersonName"
             android:layout_width="fill_parent">
         </EditText>
 
-        <EditText
-            android:id="@+id/EditTextLastName"
+        <TextView
+            android:id="@+id/TextViewEmail"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:hint="@string/LastName"
-            android:inputType="textPersonName"
+            android:text="@string/Email"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditEmailInfo"
+            android:layout_height="wrap_content"
+            android:hint="@string/EmailInfo"
+            android:inputType="textEmailAddress"
+            android:layout_width="fill_parent">
+        </EditText>
+
+        <TextView
+            android:id="@+id/TextViewPassword"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/Password"
+            android:textSize="10pt">
+        </TextView>
+
+        <EditText
+            android:id="@+id/EditPassword"
+            android:layout_height="wrap_content"
+            android:hint="@string/Password"
+            android:inputType="textEmailAddress"
             android:layout_width="fill_parent">
         </EditText>
 
@@ -72,22 +97,6 @@
             android:layout_height="wrap_content"
             android:hint="@string/PatientDoB"
             android:inputType="textPersonName"
-            android:layout_width="fill_parent">
-        </EditText>
-
-        <TextView
-            android:id="@+id/TextViewEmail"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/Email"
-            android:textSize="10pt">
-        </TextView>
-
-        <EditText
-            android:id="@+id/EditEmailInfo"
-            android:layout_height="wrap_content"
-            android:hint="@string/EmailInfo"
-            android:inputType="textEmailAddress"
             android:layout_width="fill_parent">
         </EditText>
 
@@ -145,7 +154,8 @@
             android:layout_height="wrap_content"
             android:text="@string/InsuranceInformation"
             android:textSize="10pt"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:id="@+id/TextViewInsuranceName"
@@ -201,7 +211,8 @@
             android:layout_height="wrap_content"
             android:text="@string/EmergencyInformation"
             android:textSize="10pt"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:id="@+id/TextViewEmergencyName"
@@ -212,17 +223,9 @@
         </TextView>
 
         <EditText
-            android:id="@+id/EditTextEmergencyFirstName"
+            android:id="@+id/EditTextEmergencyName"
             android:layout_height="wrap_content"
-            android:hint="@string/EmergencyFirstName"
-            android:inputType="textPersonName"
-            android:layout_width="fill_parent">
-        </EditText>
-
-        <EditText
-            android:id="@+id/EditTextEmergencyLastName"
-            android:layout_height="wrap_content"
-            android:hint="@string/EmergencyLastName"
+            android:hint="@string/EmergencyFullName"
             android:inputType="textPersonName"
             android:layout_width="fill_parent">
         </EditText>
@@ -252,7 +255,7 @@
         </TextView>
 
         <Spinner
-            android:id="@+id/SpinnerEmergencyStatuaType"
+            android:id="@+id/SpinnerEmergencyStatusType"
             android:layout_height="wrap_content"
             android:prompt="@string/EmergencyStatus"
             android:layout_width="fill_parent"
@@ -266,7 +269,8 @@
             android:layout_height="wrap_content"
             android:text="@string/PastMedicalHistory"
             android:textSize="10pt"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:id="@+id/TextViewPastMedicalHistoryInformation"
@@ -303,7 +307,8 @@
             android:layout_height="wrap_content"
             android:text="@string/FamilyHistory"
             android:textSize="10pt"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:id="@+id/TextViewFamilyHistoryInformation"
@@ -340,7 +345,8 @@
             android:layout_height="wrap_content"
             android:text="@string/Lifestyle"
             android:textSize="10pt"
-            android:textStyle="bold"></TextView>
+            android:textStyle="bold">
+        </TextView>
 
         <TextView
             android:id="@+id/TextViewLifestyleInformation"
@@ -372,10 +378,10 @@
             android:onClick="onCheckboxClicked"/>
 
         <Button
-            android:id="@+id/ButtonSendFeedback"
+            android:id="@+id/PatientButton"
             android:layout_height="wrap_content"
-            android:text="@string/feedbackbutton"
-            android:onClick="sendFeedback"
+            android:text="@string/patientbutton"
+            android:onClick="submitForm"
             android:layout_width="fill_parent">
         </Button>
 

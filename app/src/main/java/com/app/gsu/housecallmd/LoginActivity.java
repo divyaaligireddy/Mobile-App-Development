@@ -15,6 +15,8 @@ import com.app.gsu.housecallmd.entity.DoctorNurse;
 import com.app.gsu.housecallmd.entity.Patient;
 import com.app.gsu.housecallmd.entity.Profession;
 
+import java.util.List;
+
 /**
  * Created by Divya on 11-15-2017.
  */
@@ -25,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     // UI references.
     private AutoCompleteTextView mEmailView;
     private EditText mPasswordView;
-    //private View mProgressView;
     private View mLoginFormView;
     private Button mLogin;
     private Button mRegister;
@@ -34,8 +35,8 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
-        //Resolve related issue before uncommenting below
-        //addPatientsDoctors();
+
+        addPatientsDoctors();
 
         // Set up the login form.
         mEmailView = (AutoCompleteTextView) findViewById(R.id.email);
@@ -44,7 +45,7 @@ public class LoginActivity extends AppCompatActivity {
         mRegister = (Button) findViewById(R.id.create_account_button);
     }
 
-    protected void clickLogin(View v){
+    protected void createAccount(View v){
         Intent i = new Intent(LoginActivity.this, User.class);
         startActivity(i);
     }
@@ -112,24 +113,31 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     private boolean isEmailValid(String email) {
-        //TODO: Replace this with your own logic
         return email.contains("@");
     }
 
     private boolean isPasswordValid(String password) {
-        //TODO: Replace this with your own logic
-        return password.length() > 4;
+        return password.length() >= 4;
     }
 
     private void addPatientsDoctors() {
         DatabaseHandler db = new DatabaseHandler(this);
-        //Issue, check if exist already in db before insert
-        Log.d("Insert: ", "Inserting Patients ..");
-        db.addPatient(new Patient("divya@gmail.com", "divya", "Divya", "4534333323"));
-        db.addPatient(new Patient("shobana@gmail.com", "shobana", "Shobana", "4534400000"));
+        //Checking if exist already in db before inserting
+        List<Patient> patientList = db.getAllPatients();
+        if(patientList.isEmpty()) {
+            Log.d("Insert: ", "Inserting Patients ..");
+            db.addPatient(new Patient("divya@gmail.com", "divya", "Divya", "4534333323", "Atlanta", "10/03/1990", "Female", "Married", "UHC", "3333", "123", "Ravi", "3334445566", "Spouse"));
+        }
 
-        Log.d("Insert: ", "Inserting Doctors and Nurses ..");
-        db.addDoctorNurse(new DoctorNurse("sofia@gmail.com", "Sofia", Profession.Nurse, "General Medicine", 50));
-        db.addDoctorNurse(new DoctorNurse("william@gmail.com", "William", Profession.Doctor, "Cardiologist", 100));
+        List<DoctorNurse> doctorNurseList = db.getAllDoctorNurse();
+        if(doctorNurseList.isEmpty()) {
+            Log.d("Insert: ", "Inserting Doctors and Nurses ..");
+            db.addDoctorNurse(new DoctorNurse("sofia@gmail.com", "Sofia", Profession.Nurse, "General Medicine", 50));
+            db.addDoctorNurse(new DoctorNurse("william@gmail.com", "William", Profession.Doctor, "Cardiologist", 100));
+            db.addDoctorNurse(new DoctorNurse("anand@gmail.com", "Anand", Profession.Doctor, "Family Physician", 75));
+            db.addDoctorNurse(new DoctorNurse("sara@gmail.com", "Sara", Profession.Doctor, "Cardiologist", 100));
+            db.addDoctorNurse(new DoctorNurse("mehta@gmail.com", "Mehta", Profession.Doctor, "Neurologist", 120));
+            db.addDoctorNurse(new DoctorNurse("mahi@gmail.com", "Mahi", Profession.Doctor, "Gastroenterologist", 100));
+        }
     }
 }
