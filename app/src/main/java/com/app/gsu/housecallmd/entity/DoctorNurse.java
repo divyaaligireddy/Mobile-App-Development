@@ -12,19 +12,27 @@ public class DoctorNurse implements Serializable {
     private String name;
     private Profession profession;
     private String specialization;
+    private String address;
     private Integer hourlyRate;
-    //private List<String> availability;
 
     public DoctorNurse() {
     }
 
-    public DoctorNurse(String emailId, String name, Profession profession, String specialization, Integer hourlyRate) {
+    public DoctorNurse(String emailId, String name, Profession profession, String specialization, String address, Integer hourlyRate) {
         this.emailId = emailId;
         this.name = name;
         this.profession = profession;
         this.specialization = specialization;
+        this.address = address;
         this.hourlyRate = hourlyRate;
-//        this.availability = availability;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 
     public String getEmailId() {
@@ -66,14 +74,6 @@ public class DoctorNurse implements Serializable {
     public void setHourlyRate(Integer hourlyRate) {
         this.hourlyRate = hourlyRate;
     }
-
-/*    public List<String> getAvailability() {
-        return availability;
-    }
-
-    public void setAvailability(List<String> availability) {
-        this.availability = availability;
-    }*/
 
     @Override
     public String toString() {

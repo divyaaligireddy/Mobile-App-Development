@@ -29,11 +29,12 @@ public class Patient implements Serializable {
     // constructors
 
 
-    public Patient(String _id, String _password, String _name, String _phone_number) {
+    public Patient(String _id, String _password, String _name, String _phone_number, String _address) {
         this._id = _id;
         this._password = _password;
         this._name = _name;
         this._phone_number = _phone_number;
+        this._address = _address;
     }
 
     public Patient(String id, String password, String name, String _phone_number, String _address, String _dob, String _gender, String _maritalStatus, String _insuranceCompany, String _insuranceId, String _groupNumber, String _eName, String _phoneNumber, String _relationship){

@@ -49,6 +49,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     private static final String KEY_DOC_NAME = "name";
     private static final String KEY_PROFESSION = "profession";
     private static final String KEY_SPECIALIZATION = "specialization";
+    private static final String KEY_ADDRESS = "address";
     private static final String KEY_RATE = "hourly_rate";
     private static final String KEY_AVAILABILITY = "availability";
 
@@ -64,8 +65,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
 
         String CREATE_DOCTOR_NURSE_TABLE = "CREATE TABLE " + TABLE_DOCTOR_NURSE + "("
                 + KEY_DOC_ID + " TEXT PRIMARY KEY," + KEY_DOC_NAME + " TEXT," + KEY_PROFESSION + " TEXT,"
-                + KEY_SPECIALIZATION + " TEXT," + KEY_RATE + " INT,"
-                + KEY_AVAILABILITY + " TEXT" + ")";
+                + KEY_SPECIALIZATION + " TEXT," + KEY_ADDRESS + " TEXT," + KEY_RATE + " INT)";
         Log.d("Creating Table: ", CREATE_DOCTOR_NURSE_TABLE);
         db.execSQL(CREATE_DOCTOR_NURSE_TABLE);
         //db.close();
@@ -125,15 +125,10 @@ public class DatabaseHandler extends SQLiteOpenHelper {
     public Patient getPatient(String id) {
         SQLiteDatabase db = this.getReadableDatabase();
         Patient patient = null;
-        Cursor cursor = db.query(TABLE_PATIENTS, new String[] {KEY_ID, KEY_PASSWORD, KEY_NAME, KEY_PH_NO}, KEY_ID + "=?", new String[] {id}, null, null, null);
+        Cursor cursor = db.query(TABLE_PATIENTS, new String[] {KEY_ID, KEY_PASSWORD, KEY_NAME, KEY_PH_NO, "address"}, KEY_ID + "=?", new String[] {id}, null, null, null);
 
         if(cursor != null && cursor.moveToFirst()) {
-            System.out.println(cursor.getString(0));
-            System.out.println(cursor.getString(1));
-            System.out.println(cursor.getString(2));
-            System.out.println(cursor.getString(3));
-            //System.out.println(cursor.getString(4));
-            patient = new Patient(cursor.getString(cursor.getColumnIndexOrThrow(KEY_ID)), cursor.getString(1), cursor.getString(2), cursor.getString(3));
+            patient = new Patient(cursor.getString(cursor.getColumnIndexOrThrow(KEY_ID)), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4));
             cursor.close();
         }
        // db.close();
@@ -149,6 +144,7 @@ public class DatabaseHandler extends SQLiteOpenHelper {
         values.put(KEY_DOC_NAME, doctorNurse.getName());
         values.put(KEY_PROFESSION, doctorNurse.getProfession().name());
         values.put(KEY_SPECIALIZATION, doctorNurse.getSpecialization());
+        values.put(KEY_ADDRESS, doctorNurse.getAddress());
         values.put(KEY_RATE, doctorNurse.getHourlyRate().intValue());
         //values.put(KEY_AVAILABILITY, doctorNurse.getAvailability().toString());
 
@@ -175,8 +171,38 @@ public class DatabaseHandler extends SQLiteOpenHelper {
                 doctorNurse.setName(cursor.getString(1));
                 doctorNurse.setProfession(Profession.valueOf(cursor.getString(2)));
                 doctorNurse.setSpecialization(cursor.getString(3));
-                doctorNurse.setHourlyRate(Integer.parseInt(cursor.getString(4)));
-                //doctorNurse.setAvailability(Arrays.asList(cursor.getString(5)));
+                doctorNurse.setAddress(cursor.getString(4));
+                doctorNurse.setHourlyRate(Integer.parseInt(cursor.getString(5)));
+
+                // Adding contact to list
+                list.add(doctorNurse);
+            } while (cursor.moveToNext());
+        }
+
+        //db.close();
+        return list;
+    }
+
+    // Getting All Doctors/Nurses based on location
+    public List<DoctorNurse> getAllDoctorNurseBasedOnLocation(String address) {
+        List<DoctorNurse> list = new ArrayList<>();
+
+        // Select All Query
+        String selectQuery = "SELECT  * FROM " + TABLE_DOCTOR_NURSE + " WHERE address = ?";
+
+        SQLiteDatabase db = this.getWritableDatabase();
+        Cursor cursor = db.rawQuery(selectQuery, new String[]{address});
+
+        // looping through all rows and adding to list
+        if (cursor.moveToFirst()) {
+            do {
+                DoctorNurse doctorNurse = new DoctorNurse();
+                doctorNurse.setEmailId(cursor.getString(0));
+                doctorNurse.setName(cursor.getString(1));
+                doctorNurse.setProfession(Profession.valueOf(cursor.getString(2)));
+                doctorNurse.setSpecialization(cursor.getString(3));
+                doctorNurse.setAddress(cursor.getString(4));
+                doctorNurse.setHourlyRate(Integer.parseInt(cursor.getString(5)));
 
                 // Adding contact to list
                 list.add(doctorNurse);

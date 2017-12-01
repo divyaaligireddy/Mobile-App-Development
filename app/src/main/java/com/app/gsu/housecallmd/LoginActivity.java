@@ -127,17 +127,24 @@ public class LoginActivity extends AppCompatActivity {
         if(patientList.isEmpty()) {
             Log.d("Insert: ", "Inserting Patients ..");
             db.addPatient(new Patient("divya@gmail.com", "divya", "Divya", "4534333323", "Atlanta", "10/03/1990", "Female", "Married", "UHC", "3333", "123", "Ravi", "3334445566", "Spouse"));
+            db.addPatient(new Patient("teja@gmail.com", "teja", "Teja", "3332224444", "Austin", "10/29/1988", "Male", "Married", "BCBS", "111", "221", "Reddy", "33332213424", "Spouse"));
+            db.addPatient(new Patient("ravi@gmail.com", "ravi", "Ravi", "2227749387", "New York", "11/02/1978", "Male", "Married", "BCBS", "122", "211", "Devi", "3333338964", "Spouse"));
         }
 
         List<DoctorNurse> doctorNurseList = db.getAllDoctorNurse();
         if(doctorNurseList.isEmpty()) {
             Log.d("Insert: ", "Inserting Doctors and Nurses ..");
-            db.addDoctorNurse(new DoctorNurse("sofia@gmail.com", "Sofia", Profession.Nurse, "General Medicine", 50));
-            db.addDoctorNurse(new DoctorNurse("william@gmail.com", "William", Profession.Doctor, "Cardiologist", 100));
-            db.addDoctorNurse(new DoctorNurse("anand@gmail.com", "Anand", Profession.Doctor, "Family Physician", 75));
-            db.addDoctorNurse(new DoctorNurse("sara@gmail.com", "Sara", Profession.Doctor, "Cardiologist", 100));
-            db.addDoctorNurse(new DoctorNurse("mehta@gmail.com", "Mehta", Profession.Doctor, "Neurologist", 120));
-            db.addDoctorNurse(new DoctorNurse("mahi@gmail.com", "Mahi", Profession.Doctor, "Gastroenterologist", 100));
+            db.addDoctorNurse(new DoctorNurse("sofia@gmail.com", "Sofia", Profession.Nurse, "General Medicine", "Atlanta", 50));
+            db.addDoctorNurse(new DoctorNurse("william@gmail.com", "William", Profession.Doctor, "Cardiologist", "Atlanta", 100));
+            db.addDoctorNurse(new DoctorNurse("anand@gmail.com", "Anand", Profession.Doctor, "Family Physician", "Atlanta", 75));
+            db.addDoctorNurse(new DoctorNurse("sara@gmail.com", "Sara", Profession.Doctor, "Cardiologist", "Atlanta", 100));
+            db.addDoctorNurse(new DoctorNurse("mehta@gmail.com", "Mehta", Profession.Doctor, "Neurologist", "Atlanta", 120));
+            db.addDoctorNurse(new DoctorNurse("mahi@gmail.com", "Mahi", Profession.Doctor, "Gastroenterologist", "Atlanta", 100));
+            db.addDoctorNurse(new DoctorNurse("tej@gmail.com", "Tej", Profession.Doctor, "Cardiologist", "Austin", 90));
+            db.addDoctorNurse(new DoctorNurse("shirisha@gmail.com", "Shirisha", Profession.Doctor, "Neurologist", "Austin", 100));
+            db.addDoctorNurse(new DoctorNurse("farooq@gmail.com", "Farooq", Profession.Doctor, "Gastroenterologist", "Austin", 90));
+            db.addDoctorNurse(new DoctorNurse("reddy@gmail.com", "Reddy", Profession.Doctor, "Pediatrician", "Austin", 90));
+            db.addDoctorNurse(new DoctorNurse("priya@gmail.com", "Priya", Profession.Nurse, "General Medicine", "Austin", 50));
         }
     }
 }
